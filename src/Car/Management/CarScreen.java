@@ -1,23 +1,27 @@
 package Car.Management;
 
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
 
 import DAO.CarsDAO;
 import DAO.DbServicessBase;
 import Models.CarModels;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JComboBox;
+import Utils.CarUtils;
 
 public class CarScreen extends JFrame {
 
@@ -33,6 +37,7 @@ public class CarScreen extends JFrame {
 	private JTextField txtRenk;
 	private JTextField txtFiyat;
 	private JTextField txtHasarKaydi;
+	private Long secilenId;
 
 	public CarScreen() {
 		setTitle("Araç Yönetim Ekraný");
@@ -82,8 +87,10 @@ public class CarScreen extends JFrame {
 				temp.setFiyat(txtFiyat.getText());
 				temp.setDegisendurumu(cmbDegisen.getSelectedItem().toString());
 				temp.setBoyadurumu(cmbBoya.getSelectedItem().toString());
+				temp.setHasarkaydi(txtHasarKaydi.getText());
 				temp.setDurum(cmbDurum.getSelectedItem().toString());
 				dao.save(temp);
+				Doldur();
 			
 			}
 		});
@@ -174,6 +181,23 @@ public class CarScreen extends JFrame {
 		getContentPane().add(txtHasarKaydi);
 		
 		JButton btnAraBilgisiGncelle = new JButton("Ara\u00E7 Bilgisi G\u00FCncelle");
+		btnAraBilgisiGncelle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				temp.setId(secilenId);
+				temp.setMarka(txtMarka.getText());
+				temp.setModel(txtModel.getText());
+				temp.setDonanimseviyesi(txtDonanim.getText());
+				temp.setUretimyili(Long.valueOf(txtUretim.getText()));
+				temp.setRenk(txtRenk.getText());
+				temp.setFiyat(txtFiyat.getText());
+				temp.setDegisendurumu(cmbDegisen.getSelectedItem().toString());
+				temp.setBoyadurumu(cmbBoya.getSelectedItem().toString());
+				temp.setHasarkaydi(txtHasarKaydi.getText());
+				temp.setDurum(cmbDurum.getSelectedItem().toString());
+				dao.update(temp);
+				Doldur();
+			}
+		});
 		btnAraBilgisiGncelle.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnAraBilgisiGncelle.setBounds(10, 350, 159, 58);
 		getContentPane().add(btnAraBilgisiGncelle);
@@ -181,6 +205,20 @@ public class CarScreen extends JFrame {
 		JLabel lblDurum = new JLabel("Durum");
 		lblDurum.setBounds(662, 383, 82, 14);
 		getContentPane().add(lblDurum);
+		
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				secilenId = Long.valueOf(table.getValueAt(table.getSelectedRow(), 0).toString());
+				txtMarka.setText(CarUtils.getValue(table.getValueAt(table.getSelectedRow(), 1)));
+				txtModel.setText(CarUtils.getValue(table.getValueAt(table.getSelectedRow(), 2)));
+				txtDonanim.setText(CarUtils.getValue(table.getValueAt(table.getSelectedRow(), 3)));
+				txtUretim.setText(CarUtils.getValue(table.getValueAt(table.getSelectedRow(), 4)));
+				txtRenk.setText(CarUtils.getValue(table.getValueAt(table.getSelectedRow(), 5)));
+				txtFiyat.setText(CarUtils.getValue(table.getValueAt(table.getSelectedRow(), 6)));
+				txtHasarKaydi.setText(CarUtils.getValue(table.getValueAt(table.getSelectedRow(), 9)));
+			}
+		});
 	
 	}
 

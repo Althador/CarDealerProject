@@ -20,7 +20,7 @@ public class CarModels {
 	private String fiyat;
 	private String degisendurumu;
 	private String boyadurumu;
-	private Long hasarkaydi;
+	private String hasarkaydi;
 	private String durum;
 
 	@Id
@@ -90,11 +90,11 @@ public class CarModels {
 		return boyadurumu;
 	}
 
-	public Long getHasarkaydi() {
+	public String getHasarkaydi() {
 		return hasarkaydi;
 	}
 
-	public void setHasarkaydi(Long hasarkaydi) {
+	public void setHasarkaydi(String hasarkaydi) {
 		this.hasarkaydi = hasarkaydi;
 	}
 
