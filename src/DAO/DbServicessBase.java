@@ -8,8 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-import Utils.MyHBUtil;
-
 public class DbServicessBase<T> implements IDbServicess<T>{
 
 	

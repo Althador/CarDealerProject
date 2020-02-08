@@ -25,9 +25,6 @@ import Utils.CarUtils;
 
 public class CarScreen extends JFrame {
 
-	DbServicessBase<CarModels> dao = new DbServicessBase<CarModels>();
-	CarModels temp = new CarModels();
-
 	private JTable table;
 	private JTextField txtID;
 	private JTextField txtMarka;
@@ -79,6 +76,10 @@ public class CarScreen extends JFrame {
 		JButton btnEkle = new JButton("Yeni Ara\u00E7 Ekle");
 		btnEkle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				DbServicessBase<CarModels> dao = new DbServicessBase<CarModels>();
+				CarModels temp = new CarModels();
+
 				temp.setMarka(txtMarka.getText());
 				temp.setModel(txtModel.getText());
 				temp.setDonanimseviyesi(txtDonanim.getText());
@@ -183,6 +184,10 @@ public class CarScreen extends JFrame {
 		JButton btnAraBilgisiGncelle = new JButton("Ara\u00E7 Bilgisi G\u00FCncelle");
 		btnAraBilgisiGncelle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				DbServicessBase<CarModels> dao = new DbServicessBase<CarModels>();
+				CarModels temp = new CarModels();
+
 				temp.setId(secilenId);
 				temp.setMarka(txtMarka.getText());
 				temp.setModel(txtModel.getText());
@@ -228,6 +233,10 @@ public class CarScreen extends JFrame {
 				"Donaným Seviyesi", "Üretim Yýlý", "Renk", "Fiyat", "Deðiþen", "Boya", "Hasar Kaydý", "Durum" }) {
 		});
 
+
+		DbServicessBase<CarModels> dao = new DbServicessBase<CarModels>();
+		CarModels temp = new CarModels();
+
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.addRow(new Object[] { temp.getId(), temp.getMarka(), temp.getModel(), temp.getDonanimseviyesi(),
 				temp.getUretimyili(), temp.getRenk(), temp.getFiyat(), temp.getDegisendurumu(), temp.getBoyadurumu(),
@@ -248,6 +257,10 @@ public class CarScreen extends JFrame {
 
 	}
 	private void Doldur() {
+
+		DbServicessBase<CarModels> dao = new DbServicessBase<CarModels>();
+		CarModels temp = new CarModels();
+
 		CarsDAO carsdao = new CarsDAO();
 		List<CarModels> liste = carsdao.getAllRows(new CarModels());
 		String[][] data = new String[liste.size()][11];
