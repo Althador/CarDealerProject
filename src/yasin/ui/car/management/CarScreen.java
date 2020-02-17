@@ -38,6 +38,11 @@ public class CarScreen extends JFrame {
 	private JTextField txtKm;
 
 	public CarScreen() {
+		initialize();
+
+	}
+
+	private void initialize() {
 		setTitle("Araç Yönetim Ekraný");
 		setBounds(500, 500, 1014, 541);
 		getContentPane().setLayout(null);
@@ -274,8 +279,7 @@ public class CarScreen extends JFrame {
 				txtFiyat.setText(MyUtil.getValue(table.getValueAt(table.getSelectedRow(), 7)));
 				txtHasarKaydi.setText(MyUtil.getValue(table.getValueAt(table.getSelectedRow(), 10)));
 			}
-		});
-
+		});		
 	}
 
 	private JTable getTable_1() {

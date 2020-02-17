@@ -36,6 +36,11 @@ public class StaffScreen extends JFrame {
 	private Long secilenId;
 
 	public StaffScreen() {
+		initialize();
+
+	}
+
+	private void initialize() {
 		setTitle("Personel Yönetim Ekraný");
 		setBounds(500, 500, 994, 342);
 		getContentPane().setLayout(null);
@@ -197,7 +202,7 @@ public class StaffScreen extends JFrame {
 
 			}
 		});
-
+		
 	}
 
 	private JTable getTable_1() {
