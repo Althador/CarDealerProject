@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 public class MainScreen extends JFrame {
 	public MainScreen() {
 		setTitle("Mak Cars Y\u00F6netim Ekran\u0131");
-		setBounds(500, 500, 630, 387);
+		setBounds(500, 500, 630, 388);
 		getContentPane().setLayout(null);
 		
 		JButton btnEkle = new JButton("Ara\u00E7 Y\u00F6netimi");
