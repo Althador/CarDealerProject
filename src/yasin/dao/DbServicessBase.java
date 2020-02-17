@@ -1,4 +1,4 @@
-package DAO;
+package yasin.dao;
 
 import java.lang.reflect.Field;
 import java.util.List;

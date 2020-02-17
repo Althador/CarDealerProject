@@ -1,8 +1,9 @@
-package Main;
+package yasin.main;
 
 import javax.swing.JFrame;
 
-import Car.Management.CarScreen;
+import yasin.ui.car.management.CarScreen;
+import yasin.ui.staff.management.StaffScreen;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +21,7 @@ public class MainScreen extends JFrame {
 		btnEkle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new CarScreen().setVisible(true);
+				dispose();
 			}
 		});
 		btnEkle.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -35,11 +37,23 @@ public class MainScreen extends JFrame {
 		btnPersonel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnPersonel.setBounds(10, 270, 200, 67);
 		getContentPane().add(btnPersonel);
+		btnPersonel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new StaffScreen().setVisible(true);
+				dispose();
+			}
+		});
 		
 		JButton btnCikis = new JButton("\u00C7IKI\u015E");
 		btnCikis.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnCikis.setBounds(404, 270, 200, 67);
 		getContentPane().add(btnCikis);
+		btnCikis.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+			}
+		});
 		
 		JButton btnResim = new JButton("New button");
 		btnResim.setBounds(212, 83, 188, 183);

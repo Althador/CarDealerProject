@@ -1,8 +1,8 @@
-package Utils;
+package yasin.utils;
 
-import Models.CarModels;
+import yasin.models.CarModels;
 
-public class CarUtils {
+public class MyUtil {
 
 	
 	public static CarModels loginedUser ;

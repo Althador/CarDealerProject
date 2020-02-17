@@ -1,4 +1,4 @@
-package Models;
+package yasin.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +16,7 @@ public class CarModels {
 	private String model;
 	private String donanimseviyesi;
 	private Long uretimyili;
+	private String km;
 	private String renk;
 	private String fiyat;
 	private String degisendurumu;
@@ -120,5 +121,13 @@ public class CarModels {
 				+ ", uretimyili=" + uretimyili + ", renk=" + renk + ", fiyat=" + fiyat + ", degisendurumu="
 				+ degisendurumu + ", boyadurumu=" + boyadurumu + ", hasarkaydi=" + hasarkaydi + ", durum=" + durum
 				+ "]";
+	}
+
+	public String getKm() {
+		return km;
+	}
+
+	public void setKm(String km) {
+		this.km = km;
 	}
 }

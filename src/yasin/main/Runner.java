@@ -1,4 +1,4 @@
-package Main;
+package yasin.main;
 
 public class Runner {
 	

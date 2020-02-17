@@ -1,4 +1,4 @@
-package DAO;
+package yasin.dao;
 
 import java.util.List;
 
