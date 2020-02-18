@@ -1,20 +1,19 @@
 package yasin.ui.accounting.management;
 
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import yasin.main.MainScreen;
-
-import javax.swing.JButton;
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class AccountingMainScreen extends JFrame{
 	public AccountingMainScreen() {
 		setTitle("Muhasebe Ana Ekran\u0131");
 		getContentPane().setLayout(null);
-		setBounds(500, 500, 452, 293);
+		setBounds(700, 200, 452, 293);
 		
 		JButton btnGelir = new JButton("Gelirleri G\u00F6r!");
 		btnGelir.addActionListener(new ActionListener() {
@@ -31,6 +30,12 @@ public class AccountingMainScreen extends JFrame{
 		btnGiderleriGr.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnGiderleriGr.setBounds(256, 58, 176, 135);
 		getContentPane().add(btnGiderleriGr);
+		btnGiderleriGr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ExpenseScreen().setVisible(true);
+				dispose();
+			}
+		});
 		
 		JButton btnCikis = new JButton("\u00C7\u0131k\u0131\u015F Yap!");
 		btnCikis.addActionListener(new ActionListener() {

@@ -17,11 +17,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import yasin.dao.CarsDAO;
 import yasin.dao.DbServicessBase;
-import yasin.dao.StaffDAO;
 import yasin.main.MainScreen;
-import yasin.models.CarModels;
 import yasin.models.StaffModels;
 import yasin.utils.MyUtil;
 
@@ -42,7 +39,7 @@ public class StaffScreen extends JFrame {
 
 	private void initialize() {
 		setTitle("Personel Yönetim Ekraný");
-		setBounds(500, 500, 994, 342);
+		setBounds(700, 200, 994, 342);
 		getContentPane().setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -227,9 +224,8 @@ public class StaffScreen extends JFrame {
 		DbServicessBase<StaffModels> dao = new DbServicessBase<StaffModels>();
 		StaffModels temp = new StaffModels();
 
-		StaffDAO staffdao = new StaffDAO();
-		List<StaffModels> liste = staffdao.getAllRows(new StaffModels());
-		String[][] data = new String[liste.size()][11];
+		List<StaffModels> liste = dao.getAllRows(new StaffModels());
+		String[][] data = new String[liste.size()][6];
 		String[] columns = { "ID", "Ýsim", "Soyisim", "Mevki", "TCKNo", "Maaþ" };
 		for (int i = 0; i < liste.size(); i++) {
 			data[i][0] = String.valueOf(liste.get(i).getId());

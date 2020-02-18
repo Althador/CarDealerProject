@@ -17,7 +17,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import yasin.dao.CarsDAO;
 import yasin.dao.DbServicessBase;
 import yasin.main.MainScreen;
 import yasin.models.CarModels;
@@ -44,7 +43,7 @@ public class CarScreen extends JFrame {
 
 	private void initialize() {
 		setTitle("Araç Yönetim Ekraný");
-		setBounds(500, 500, 1014, 541);
+		setBounds(700, 200, 1014, 541);
 		getContentPane().setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -309,8 +308,7 @@ public class CarScreen extends JFrame {
 		DbServicessBase<CarModels> dao = new DbServicessBase<CarModels>();
 		CarModels temp = new CarModels();
 
-		CarsDAO carsdao = new CarsDAO();
-		List<CarModels> liste = carsdao.getAllRows(new CarModels());
+		List<CarModels> liste = dao.getAllRows(new CarModels());
 		String[][] data = new String[liste.size()][12];
 		String[] columns = { "ID", "Marka", "Model", "Donaným Seviyesi", "Üretim Yýlý", "Kilometre", "Renk", "Fiyat",
 				"Deðiþen", "Boya", "Hasar Kaydý", "Durum" };

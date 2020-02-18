@@ -19,21 +19,20 @@ import javax.swing.table.DefaultTableModel;
 
 import yasin.dao.DbServicessBase;
 import yasin.main.MainScreen;
-import yasin.models.CarModels;
-import yasin.models.IncomeModels;
+import yasin.models.ExpenseModels;
 import yasin.models.StaffModels;
 import yasin.utils.MyUtil;
 
-public class IncomeScreen extends JFrame {
+public class ExpenseScreen extends JFrame {
 	private JTable table;
 	private JTextField txtId;
 	private JTextField txtMiktar;
 	private JTextField txtTanim;
 	private Long secilenId;
 
-	public IncomeScreen() {
-		DbServicessBase<IncomeModels> dao = new DbServicessBase<IncomeModels>();
-		IncomeModels temp = new IncomeModels();
+	public ExpenseScreen() {
+		DbServicessBase<ExpenseModels> dao = new DbServicessBase<ExpenseModels>();
+		ExpenseModels temp = new ExpenseModels();
 		initialize();
 	}
 
@@ -44,11 +43,11 @@ public class IncomeScreen extends JFrame {
 		JComboBox cmbSorumlu = new JComboBox();
 		cmbSorumlu.setBounds(283, 474, 167, 20);
 		getContentPane().add(cmbSorumlu);
-
+		
 		DbServicessBase<StaffModels> dao = new DbServicessBase<StaffModels>();
 		StaffModels staff = new StaffModels();
 		List<StaffModels> personel = dao.getAllRows(new StaffModels());
-
+		
 		cmbSorumlu.setModel(new DefaultComboBoxModel(personel.toArray()));
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -56,12 +55,15 @@ public class IncomeScreen extends JFrame {
 		getContentPane().add(scrollPane);
 		scrollPane.setViewportView(getTable_1());
 
-		JButton btnEkle = new JButton("Gelir Ekle");
+		table = new JTable();
+		scrollPane.setColumnHeaderView(table);
+
+		JButton btnEkle = new JButton("Gider Ekle");
 		btnEkle.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnEkle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				DbServicessBase<IncomeModels> dao = new DbServicessBase<IncomeModels>();
-				IncomeModels temp = new IncomeModels();
+				DbServicessBase<ExpenseModels> dao = new DbServicessBase<ExpenseModels>();
+				ExpenseModels temp = new ExpenseModels();
 
 				temp.setMiktar(txtMiktar.getText());
 				temp.setTanim(txtTanim.getText());
@@ -74,12 +76,12 @@ public class IncomeScreen extends JFrame {
 		btnEkle.setBounds(10, 372, 125, 23);
 		getContentPane().add(btnEkle);
 
-		JButton btnSil = new JButton("Gelir Sil");
+		JButton btnSil = new JButton("Gider Sil");
 		btnSil.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnSil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DbServicessBase<IncomeModels> dao = new DbServicessBase<IncomeModels>();
-				IncomeModels temp = new IncomeModels();
+				DbServicessBase<ExpenseModels> dao = new DbServicessBase<ExpenseModels>();
+				ExpenseModels temp = new ExpenseModels();
 
 				temp.setId(secilenId);
 				temp.setMiktar(txtMiktar.getText());
@@ -92,12 +94,12 @@ public class IncomeScreen extends JFrame {
 		btnSil.setBounds(10, 406, 125, 23);
 		getContentPane().add(btnSil);
 
-		JButton btnGuncelle = new JButton("Gelir G\u00FCncelle");
+		JButton btnGuncelle = new JButton("Gider G\u00FCncelle");
 		btnGuncelle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				DbServicessBase<IncomeModels> dao = new DbServicessBase<IncomeModels>();
-				IncomeModels temp = new IncomeModels();
+				DbServicessBase<ExpenseModels> dao = new DbServicessBase<ExpenseModels>();
+				ExpenseModels temp = new ExpenseModels();
 
 				temp.setMiktar(txtMiktar.getText());
 				temp.setTanim(txtTanim.getText());
@@ -155,7 +157,7 @@ public class IncomeScreen extends JFrame {
 		JLabel lblSorumlu = new JLabel("Sorumlu");
 		lblSorumlu.setBounds(218, 474, 55, 14);
 		getContentPane().add(lblSorumlu);
-
+		
 		JButton btnDoldur = new JButton("Verileri Getir");
 		btnDoldur.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnDoldur.addActionListener(new ActionListener() {
@@ -181,33 +183,34 @@ public class IncomeScreen extends JFrame {
 		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "ID", "Miktar", "Taným", "Sorumlu" }) {
 		});
 
-		DbServicessBase<IncomeModels> dao = new DbServicessBase<IncomeModels>();
-		IncomeModels temp = new IncomeModels();
+		DbServicessBase<ExpenseModels> dao = new DbServicessBase<ExpenseModels>();
+		ExpenseModels temp = new ExpenseModels();
 
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.addRow(new Object[] { temp.getId(), temp.getMiktar(), temp.getTanim(), temp.getSorumlukisi() });
 
+
 		return table;
 
 	}
-
 	private void Doldur() {
 
-		DbServicessBase<IncomeModels> dao = new DbServicessBase<IncomeModels>();
-		IncomeModels temp = new IncomeModels();
+		DbServicessBase<ExpenseModels> dao = new DbServicessBase<ExpenseModels>();
+		ExpenseModels temp = new ExpenseModels();
 
-		List<IncomeModels> liste = dao.getAllRows(new IncomeModels());
-		String[][] data = new String[liste.size()][4];
-		String[] columns = { "ID", "Miktar", "Taným", "Sorumlu" };
+		List<ExpenseModels> liste = dao.getAllRows(new ExpenseModels());
+		String[][] data = new String[liste.size()][5];
+		String[] columns = { "ID", "Miktar", "Taným", "Sorumlu"};
 		for (int i = 0; i < liste.size(); i++) {
 			data[i][0] = String.valueOf(liste.get(i).getId());
 			data[i][1] = String.valueOf(liste.get(i).getMiktar());
 			data[i][2] = String.valueOf(liste.get(i).getTanim());
 			data[i][3] = String.valueOf(liste.get(i).getSorumlukisi());
 
+
 		}
 		DefaultTableModel model1 = new DefaultTableModel(data, columns);
 		table.setModel(model1);
-
+		
 	}
 }
