@@ -2,6 +2,7 @@ package yasin.main;
 
 import javax.swing.JFrame;
 
+import yasin.ui.accounting.management.AccountingMainScreen;
 import yasin.ui.car.management.CarScreen;
 import yasin.ui.staff.management.StaffScreen;
 
@@ -29,6 +30,12 @@ public class MainScreen extends JFrame {
 		getContentPane().add(btnEkle);
 		
 		JButton btnMuhasebe = new JButton("Muhasebe Y\u00F6netimi");
+		btnMuhasebe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new AccountingMainScreen().setVisible(true);
+				dispose();
+			}
+		});
 		btnMuhasebe.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnMuhasebe.setBounds(404, 11, 200, 67);
 		getContentPane().add(btnMuhasebe);
@@ -59,6 +66,6 @@ public class MainScreen extends JFrame {
 		btnResim.setBounds(212, 83, 188, 183);
 		getContentPane().add(btnResim);
 		btnResim.setIcon(new ImageIcon(
-				"C:\\Users\\pc\\Desktop\\JAVA\\yasinmurat\\workspace1\\MakCarDealer\\Photos\\bmw.png"));
+				"Photos\\bmw.png"));
 	}
 }

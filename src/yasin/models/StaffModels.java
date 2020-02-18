@@ -61,8 +61,7 @@ public class StaffModels {
 	
 	@Override
 	public String toString() {
-		return "StaffModels [id=" + id + ", isim=" + isim + ", soyisim=" + soyisim + ", mevki=" + mevki + ", tckno="
-				+ tckno + ", maas=" + maas + "]";
+		return isim+" "+soyisim;
 	}
 	
 	
