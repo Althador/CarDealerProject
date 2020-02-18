@@ -55,9 +55,6 @@ public class ExpenseScreen extends JFrame {
 		getContentPane().add(scrollPane);
 		scrollPane.setViewportView(getTable_1());
 
-		table = new JTable();
-		scrollPane.setColumnHeaderView(table);
-
 		JButton btnEkle = new JButton("Gider Ekle");
 		btnEkle.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnEkle.addActionListener(new ActionListener() {
@@ -189,7 +186,10 @@ public class ExpenseScreen extends JFrame {
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.addRow(new Object[] { temp.getId(), temp.getMiktar(), temp.getTanim(), temp.getSorumlukisi() });
 
-
+		table.getColumnModel().getColumn(0).setPreferredWidth(50);
+		table.getColumnModel().getColumn(1).setPreferredWidth(80);
+		table.getColumnModel().getColumn(2).setPreferredWidth(105);
+		table.getColumnModel().getColumn(3).setPreferredWidth(105);
 		return table;
 
 	}
@@ -199,7 +199,7 @@ public class ExpenseScreen extends JFrame {
 		ExpenseModels temp = new ExpenseModels();
 
 		List<ExpenseModels> liste = dao.getAllRows(new ExpenseModels());
-		String[][] data = new String[liste.size()][5];
+		String[][] data = new String[liste.size()][4];
 		String[] columns = { "ID", "Miktar", "Taným", "Sorumlu"};
 		for (int i = 0; i < liste.size(); i++) {
 			data[i][0] = String.valueOf(liste.get(i).getId());
@@ -211,6 +211,10 @@ public class ExpenseScreen extends JFrame {
 		}
 		DefaultTableModel model1 = new DefaultTableModel(data, columns);
 		table.setModel(model1);
+		table.getColumnModel().getColumn(0).setPreferredWidth(50);
+		table.getColumnModel().getColumn(1).setPreferredWidth(80);
+		table.getColumnModel().getColumn(2).setPreferredWidth(105);
+		table.getColumnModel().getColumn(3).setPreferredWidth(105);
 		
 	}
 }

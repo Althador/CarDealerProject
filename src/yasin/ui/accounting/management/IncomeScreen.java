@@ -19,7 +19,6 @@ import javax.swing.table.DefaultTableModel;
 
 import yasin.dao.DbServicessBase;
 import yasin.main.MainScreen;
-import yasin.models.CarModels;
 import yasin.models.IncomeModels;
 import yasin.models.StaffModels;
 import yasin.utils.MyUtil;
@@ -186,7 +185,10 @@ public class IncomeScreen extends JFrame {
 
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.addRow(new Object[] { temp.getId(), temp.getMiktar(), temp.getTanim(), temp.getSorumlukisi() });
-
+		table.getColumnModel().getColumn(0).setPreferredWidth(50);
+		table.getColumnModel().getColumn(1).setPreferredWidth(80);
+		table.getColumnModel().getColumn(2).setPreferredWidth(105);
+		table.getColumnModel().getColumn(3).setPreferredWidth(105);
 		return table;
 
 	}
@@ -208,6 +210,9 @@ public class IncomeScreen extends JFrame {
 		}
 		DefaultTableModel model1 = new DefaultTableModel(data, columns);
 		table.setModel(model1);
-
+		table.getColumnModel().getColumn(0).setPreferredWidth(50);
+		table.getColumnModel().getColumn(1).setPreferredWidth(80);
+		table.getColumnModel().getColumn(2).setPreferredWidth(105);
+		table.getColumnModel().getColumn(3).setPreferredWidth(105);
 	}
 }
